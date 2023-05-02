@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "532447449127",
+    "project_id": "healthvision-8b96e",
+    "storage_bucket": "healthvision-8b96e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532447449127:android:39a326a5cd04306c263e02",
+        "android_client_info": {
+          "package_name": "com.luxx.healthvision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532447449127-9obk4rtjoffqab2bq74lnsvi0a8kksop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo2Qi24Une-3ddXN-ecieey22yC-maD0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532447449127-8s7bkj85vbq2bg1vf6f11647o35bbh0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
