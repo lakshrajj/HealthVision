@@ -14,19 +14,25 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class Login : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    var databaseReference: DatabaseReference? = null
+    var firebaseDatabase: FirebaseDatabase? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var signinBtn = findViewById<Button>(R.id.signinBtn)
+        val signinBtn = findViewById<Button>(R.id.signinBtn)
 
         auth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase?.reference
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("532447449127-9obk4rtjoffqab2bq74lnsvi0a8kksop.apps.googleusercontent.com")
@@ -78,6 +84,11 @@ class Login : AppCompatActivity() {
 
         auth.signInWithCredential(cred).addOnCompleteListener {
             if (it.isSuccessful){
+
+                val newUser = databaseReference?.child((auth.currentUser?.uid!!))
+
+                newUser?.child("name")?.setValue(account.displayName)
+                newUser?.child("medicine")?.child("0")?.setValue(1)
 
                 Toast.makeText(this, "Sign-In Success", Toast.LENGTH_LONG).show()
                 val intent = Intent(this,MainActivity::class.java)
